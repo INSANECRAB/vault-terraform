@@ -1,0 +1,22 @@
+vault_address = "http://localhost:8200"
+vault_token   = "your-vault-token-here"
+policy_name   = "my-policy"
+manage_existing_policy = false
+
+policy_rules = [
+  {
+    path         = "secret/data/app1/*"
+    capabilities = ["create", "read", "update", "delete"]
+    description  = "Full access to app1 secrets"
+  },
+  {
+    path         = "secret/metadata/app1/*"
+    capabilities = ["list"]
+    description  = "List metadata for app1"
+  },
+  {
+    path         = "auth/token/lookup-self"
+    capabilities = ["read"]
+    description  = "Allow token self-lookup"
+  }
+]
